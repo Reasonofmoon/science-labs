@@ -1,31 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faraday's Electromagnetic Discoveries Experiment</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>패러데이의 전자기 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .coil {
+            width: 50px;
+            height: 50px;
+            background-color: #e74c3c;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Faraday's Electromagnetic Discoveries Experiment</h1>
-    </header>
-    <main class="main-content">
-        <section class="experiment-details">
-            <h2>Explore the Relationship Between Electricity and Magnetism</h2>
-            <p>Recreate Faraday's groundbreaking experiments in electromagnetism.</p>
-            <h3>Steps:</h3>
-            <ol>
-                <li>Create a simple electromagnet using a nail, wire, and battery.</li>
-                <li>Demonstrate electromagnetic induction using a magnet and a coil of wire.</li>
-                <li>Build a simple electric motor using magnets, wire, and a battery.</li>
-                <li>Observe how changing magnetic fields can induce electric currents.</li>
-            </ol>
-            <p>Experience the fundamental principles that led to the development of modern electrical technology!</p>
-        </section>
-    </main>
-    <footer class="footer">
-        <a href="../index.html">Back to Experiments</a>
-    </footer>
+    <div class="container">
+        <h1>패러데이의 전자기 실험</h1>
+        <p>전자기 유도를 체험해보세요!</p>
+        <div class="coil" id="coil"></div>
+        <button onclick="induceCurrent()">전자기 유도</button>
+    </div>
+    <script>
+        function induceCurrent() {
+            var coil = document.getElementById("coil");
+            coil.style.backgroundColor = "#2ecc71";
+        }
+    </script>
 </body>
 </html>

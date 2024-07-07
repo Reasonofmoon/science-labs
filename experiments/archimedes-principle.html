@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archimedes' Principle Experiment</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>아르키메데스의 부력 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .object {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            margin: 20px;
+        }
+        .water {
+            display: inline-block;
+            width: 200px;
+            height: 300px;
+            background-color: #2980b9;
+            position: relative;
+            margin-top: 50px;
+        }
+        .object.submerged {
+            background-color: #e74c3c;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Archimedes' Principle Experiment</h1>
-    </header>
-    <main class="main-content">
-        <section class="experiment-details">
-            <h2>Explore Buoyancy and Fluid Displacement</h2>
-            <p>In this experiment, we will explore Archimedes' principle of buoyancy and fluid displacement.</p>
-            <h3>Steps:</h3>
-            <ol>
-                <li>Fill a container with water and mark the water level.</li>
-                <li>Carefully place an object in the water and observe the new water level.</li>
-                <li>Calculate the volume of water displaced.</li>
-                <li>Measure the weight of the object and compare it to the weight of the displaced water.</li>
-            </ol>
-            <p>Observe how the buoyant force is equal to the weight of the displaced fluid!</p>
-        </section>
-    </main>
-    <footer class="footer">
-        <a href="../index.html">Back to Experiments</a>
-    </footer>
+    <div class="container">
+        <h1>아르키메데스의 부력 실험</h1>
+        <p>물체를 물에 넣어 부력을 체험해보세요!</p>
+        <div class="water" id="water">
+            <div class="object" id="object"></div>
+        </div>
+        <button onclick="toggleSubmerge()">물에 넣기 / 빼기</button>
+    </div>
+    <script>
+        function toggleSubmerge() {
+            var object = document.getElementById("object");
+            object.classList.toggle("submerged");
+        }
+    </script>
 </body>
 </html>

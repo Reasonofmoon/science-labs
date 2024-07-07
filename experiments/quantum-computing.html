@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Computing Basics Experiment</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>양자 컴퓨팅 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .qubit {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Quantum Computing Basics Experiment</h1>
-    </header>
-    <main class="main-content">
-        <section class="experiment-details">
-            <h2>Explore Superposition and Entanglement</h2>
-            <p>Dive into the fascinating world of quantum computing and its fundamental principles.</p>
-            <h3>Steps:</h3>
-            <ol>
-                <li>Use a quantum simulator to create and manipulate qubits.</li>
-                <li>Explore the concept of superposition by putting qubits in multiple states simultaneously.</li>
-                <li>Demonstrate quantum entanglement by creating correlated qubit pairs.</li>
-                <li>Implement simple quantum algorithms and compare them with classical counterparts.</li>
-            </ol>
-            <p>Experience the potential future of computing and information processing!</p>
-        </section>
-    </main>
-    <footer class="footer">
-        <a href="../index.html">Back to Experiments</a>
-    </footer>
+    <div class="container">
+        <h1>양자 컴퓨팅 실험</h1>
+        <p>양자 비트의 상태를 변경해보세요!</p>
+        <div class="qubit" id="qubit"></div>
+        <button onclick="toggleQubit()">상태 변경</button>
+    </div>
+    <script>
+        function toggleQubit() {
+            var qubit = document.getElementById("qubit");
+            if (qubit.style.backgroundColor === "rgb(52, 152, 219)") {
+                qubit.style.backgroundColor = "#e74c3c";
+            } else {
+                qubit.style.backgroundColor = "#3498db";
+            }
+        }
+    </script>
 </body>
 </html>
