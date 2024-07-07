@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>파라데이의 전자기 실험</title>
     <style>
         body {
@@ -81,35 +80,13 @@
         }
         #coil {
             background: #00C853;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
         #motor {
             background: #D50000;
-            left: 100%;
-            transform: translate(-100%, -50%);
-=======
-    <title>패러데이의 전자기 실험</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .coil {
-            width: 50px;
-            height: 50px;
-            background-color: #e74c3c;
-            margin: 0 auto;
->>>>>>> 6920fa2 (Add scientific experiment HTML files)
         }
     </style>
 </head>
 <body>
-<<<<<<< HEAD
     <header class="header">
         <h1>파라데이의 전자기 실험</h1>
     </header>
@@ -136,8 +113,8 @@
             <button onclick="startSimulation()">시뮬레이션 시작</button>
             <div id="simulation">
                 <div id="magnet"></div>
-                <div id="coil"></div>
-                <div id="motor"></div>
+                <div id="coil" style="left: 50%;"></div>
+                <div id="motor" style="left: 100%;"></div>
             </div>
             <div class="result" id="result"></div>
         </section>
@@ -162,9 +139,9 @@
 
             const inducedCurrent = batteryVoltage * coilTurns; // 단순화된 전류 유도 계산
 
-            magnet.style.transform = `translate(50px, -50%)`;
-            coil.style.transform = `translate(-50px, -50%)`;
-            motor.style.transform = `translate(-100px, -50%)`;
+            magnet.style.transform = `translateY(-50%) translateX(50px)`;
+            coil.style.transform = `translateY(-50%) translateX(-50px)`;
+            motor.style.transform = `translateY(-50%) translateX(-100px)`;
 
             setTimeout(() => {
                 resultDiv.innerHTML = `
@@ -174,18 +151,6 @@
                     <p>변화하는 자기장이 전류를 유도하는 것을 관찰하세요!</p>
                 `;
             }, 1000);
-=======
-    <div class="container">
-        <h1>패러데이의 전자기 실험</h1>
-        <p>전자기 유도를 체험해보세요!</p>
-        <div class="coil" id="coil"></div>
-        <button onclick="induceCurrent()">전자기 유도</button>
-    </div>
-    <script>
-        function induceCurrent() {
-            var coil = document.getElementById("coil");
-            coil.style.backgroundColor = "#2ecc71";
->>>>>>> 6920fa2 (Add scientific experiment HTML files)
         }
     </script>
 </body>
