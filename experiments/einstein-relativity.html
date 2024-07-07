@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아인슈타인의 상대성 이론 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+<<<<<<< HEAD
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header, .footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .experiment-details {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .experiment-details h2 {
+            margin-top: 0;
+        }
+        .experiment-details p, .experiment-details ol {
+            font-size: 1.1em;
+        }
+        .experiment-details .result {
+            margin-top: 20px;
+        }
+        .experiment-details button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #simulation {
+            margin: 20px 0;
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background: #e0f7fa;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #moving-object {
+            width: 50px;
+            height: 30px;
+            background: #ffab00;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            transition: transform 1s linear;
+=======
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .object {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            margin: 20px;
+>>>>>>> 6920fa2 (Add scientific experiment HTML files)
+        }
+    </style>
+</head>
+<body>
+<<<<<<< HEAD
+    <header class="header">
+        <h1>아인슈타인의 상대성 이론 실험</h1>
+    </header>
+    <main class="main-content">
+        <section class="experiment-details">
+            <h2>시간 지연 및 길이 수축 시각화</h2>
+            <p>아인슈타인의 특수 상대성 이론의 놀라운 개념을 탐구해보세요.</p>
+            <h3>실험 절차:</h3>
+            <ol>
+                <li>컴퓨터 시뮬레이션을 사용하여 빛의 속도에 근접한 물체를 시각화합니다.</li>
+                <li>빠르게 움직이는 물체에 대해 시간이 어떻게 느리게 흐르는지 관찰합니다(시간 지연).</li>
+                <li>물체가 운동 방향으로 어떻게 수축하는지 확인합니다(길이 수축).</li>
+                <li>E=mc²을 사용하여 상대성 이론이 질량과 에너지에 미치는 영향을 계산합니다.</li>
+            </ol>
+            <p>공간과 시간에 대한 우리의 이해를 바꾼 혁명적인 아이디어를 체험하세요!</p>
+            <div class="input-group">
+                <label for="velocity">속도 (빛의 속도 비율, 0 ~ 1):</label>
+                <input type="number" id="velocity" placeholder="예: 0.9" step="0.01" min="0" max="1">
+            </div>
+            <button onclick="startSimulation()">시뮬레이션 시작</button>
+            <div id="simulation">
+                <div id="moving-object"></div>
+            </div>
+            <div class="result" id="result"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="../index.html">실험 목록으로 돌아가기</a>
+    </footer>
+
+    <script>
+        function startSimulation() {
+            const velocity = parseFloat(document.getElementById('velocity').value);
+            const simulation = document.getElementById('simulation');
+            const object = document.getElementById('moving-object');
+            const resultDiv = document.getElementById('result');
+            const speedOfLight = 300000; // km/s
+            const objectLength = 50; // Original length of the object in pixels
+
+            if (isNaN(velocity) || velocity < 0 || velocity > 1) {
+                resultDiv.innerHTML = '<p>올바른 속도를 입력하세요. (0 ~ 1 사이의 값)</p>';
+                return;
+            }
+
+            const timeDilation = 1 / Math.sqrt(1 - velocity * velocity);
+            const lengthContraction = objectLength * Math.sqrt(1 - velocity * velocity);
+
+            object.style.transform = `translateY(-50%) scaleX(${lengthContraction / objectLength})`;
+            setTimeout(() => {
+                object.style.transform = `translate(100%, -50%) scaleX(${lengthContraction / objectLength})`;
+            }, 100);
+
+            resultDiv.innerHTML = `
+                <p>속도: ${velocity * speedOfLight} km/s</p>
+                <p>시간 지연: ${timeDilation.toFixed(2)} 배 느려짐</p>
+                <p>길이 수축: ${lengthContraction.toFixed(2)} 픽셀로 수축</p>
+            `;
+=======
+    <div class="container">
+        <h1>아인슈타인의 상대성 이론 실험</h1>
+        <p>상대성 이론의 개념을 체험해보세요!</p>
+        <div class="object" id="object"></div>
+        <button onclick="moveObject()">물체 이동</button>
+    </div>
+    <script>
+        function moveObject() {
+            var object = document.getElementById("object");
+            object.style.transition = "left 2s ease";
+            object.style.position = "relative";
+            object.style.left = "200px";
+>>>>>>> 6920fa2 (Add scientific experiment HTML files)
+        }
+    </script>
+</body>
+</html>

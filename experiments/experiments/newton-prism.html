@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴턴의 프리즘 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header, .footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .experiment-details {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .experiment-details h2 {
+            margin-top: 0;
+        }
+        .experiment-details p, .experiment-details ol {
+            font-size: 1.1em;
+        }
+        .experiment-details .result {
+            margin-top: 20px;
+        }
+        .experiment-details button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        #simulation {
+            margin: 20px 0;
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background: #e0f7fa;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #lightBeam, #recombinedLight {
+            width: 10px;
+            height: 100%;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: left 1s linear;
+        }
+        #prism1, #prism2 {
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 60px solid rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        #prism1 {
+            left: 30%;
+        }
+        #prism2 {
+            left: 70%;
+        }
+        .spectrum {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            position: absolute;
+            top: 0;
+            left: 40%;
+            transition: width 1s linear;
+        }
+        .recombined {
+            width: 10px;
+            height: 100%;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 60%;
+            transition: left 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>뉴턴의 프리즘 실험</h1>
+    </header>
+    <main class="main-content">
+        <section class="experiment-details">
+            <h2>빛과 색의 본질을 발견하다</h2>
+            <p>프리즘을 사용하여 백색광이 다양한 색으로 구성되어 있음을 탐구해보세요.</p>
+            <h3>실험 절차:</h3>
+            <ol>
+                <li>어두운 방에 프리즘을 설치하고 백색광의 단일 빔을 설정합니다.</li>
+                <li>프리즘을 통과할 때 생성되는 색의 스펙트럼을 관찰합니다.</li>
+                <li>두 번째 프리즘을 사용하여 색을 다시 백색광으로 재결합합니다.</li>
+                <li>다양한 색의 빛을 실험하고 그 스펙트럼을 관찰합니다.</li>
+            </ol>
+            <p>아이작 뉴턴 경이 발견한 빛의 근본적인 본질을 체험해보세요!</p>
+            <button onclick="startSimulation()">시뮬레이션 시작</button>
+            <div id="simulation">
+                <div id="lightBeam"></div>
+                <div id="prism1"></div>
+                <div class="spectrum" id="spectrum"></div>
+                <div id="prism2"></div>
+                <div class="recombined" id="recombinedLight"></div>
+            </div>
+            <div class="result" id="result"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="../index.html">실험 목록으로 돌아가기</a>
+    </footer>
+
+    <script>
+        function startSimulation() {
+            const lightBeam = document.getElementById('lightBeam');
+            const spectrum = document.getElementById('spectrum');
+            const recombinedLight = document.getElementById('recombinedLight');
+            const resultDiv = document.getElementById('result');
+
+            lightBeam.style.left = '30%';
+
+            setTimeout(() => {
+                spectrum.style.width = '30%';
+            }, 1000);
+
+            setTimeout(() => {
+                recombinedLight.style.left = '60%';
+            }, 2000);
+
+            resultDiv.innerHTML = '<p>프리즘을 통해 빛이 분산되는 것을 관찰하고, 두 번째 프리즘을 통해 다시 백색광으로 결합되는 것을 볼 수 있습니다.</p>';
+        }
+    </script>
+</body>
+</html>

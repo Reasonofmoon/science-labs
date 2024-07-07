@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>갈릴레오의 운동 연구 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header, .footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .experiment-details {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .experiment-details h2 {
+            margin-top: 0;
+        }
+        .experiment-details p, .experiment-details ol {
+            font-size: 1.1em;
+        }
+        .experiment-details .result {
+            margin-top: 20px;
+        }
+        .experiment-details button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #simulation {
+            margin: 20px 0;
+            width: 100%;
+            height: 300px;
+            position: relative;
+            background: #e0f7fa;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #ball, #pendulum {
+            width: 30px;
+            height: 30px;
+            background: #ffab00;
+            position: absolute;
+            transition: transform 1s linear;
+        }
+        #pendulum {
+            width: 10px;
+            height: 10px;
+            background: #D50000;
+            border-radius: 50%;
+            left: 50%;
+            top: 20%;
+            transform-origin: top;
+            transition: transform 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>갈릴레오의 운동 연구 실험</h1>
+    </header>
+    <main class="main-content">
+        <section class="experiment-details">
+            <h2>운동 법칙 탐구</h2>
+            <p>경사면과 진자를 이용한 갈릴레오의 유명한 실험을 재현해보세요.</p>
+            <h3>실험 절차:</h3>
+            <ol>
+                <li>매끄러운 표면의 경사면을 설치합니다.</li>
+                <li>다양한 질량의 공을 경사면 아래로 굴리고 가속도를 측정합니다.</li>
+                <li>다양한 길이의 진자를 만들어 그 주기를 관찰합니다.</li>
+                <li>관찰 결과를 기록하고 분석하여 운동 법칙을 발견합니다.</li>
+            </ol>
+            <p>갈릴레오가 어떻게 아리스토텔레스 물리학에 도전하고 뉴턴의 법칙의 기초를 마련했는지 체험해보세요!</p>
+            <div class="input-group">
+                <label for="mass">공의 질량 (kg):</label>
+                <input type="number" id="mass" placeholder="질량을 입력하세요" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="slope">경사면의 각도 (도):</label>
+                <input type="number" id="slope" placeholder="각도를 입력하세요" step="1" min="0" max="90">
+            </div>
+            <div class="input-group">
+                <label for="length">진자의 길이 (m):</label>
+                <input type="number" id="length" placeholder="길이를 입력하세요" step="0.1">
+            </div>
+            <button onclick="startSimulation()">시뮬레이션 시작</button>
+            <div id="simulation">
+                <div id="ball"></div>
+                <div id="pendulum"></div>
+            </div>
+            <div class="result" id="result"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="../index.html">실험 목록으로 돌아가기</a>
+    </footer>
+
+    <script>
+        function startSimulation() {
+            const mass = parseFloat(document.getElementById('mass').value);
+            const slope = parseFloat(document.getElementById('slope').value);
+            const length = parseFloat(document.getElementById('length').value);
+            const resultDiv = document.getElementById('result');
+            const ball = document.getElementById('ball');
+            const pendulum = document.getElementById('pendulum');
+            const g = 9.8; // 중력 가속도 (m/s^2)
+
+            if (isNaN(mass) || isNaN(slope) || isNaN(length) || mass <= 0 || slope < 0 || slope > 90 || length <= 0) {
+                resultDiv.innerHTML = '<p>올바른 값을 입력하세요.</p>';
+                return;
+            }
+
+            // 경사면 가속도 계산
+            const angleRad = slope * (Math.PI / 180);
+            const acceleration = g * Math.sin(angleRad);
+
+            // 진자 주기 계산
+            const period = 2 * Math.PI * Math.sqrt(length / g);
+
+            // 공 애니메이션
+            ball.style.transitionDuration = `${Math.sqrt(2 * 10 / acceleration)}s`;
+            ball.style.transform = `translateY(${300 - (300 - acceleration * 50)}px)`;
+
+            // 진자 애니메이션
+            pendulum.style.transitionDuration = `${period / 2}s`;
+            pendulum.style.transform = `rotate(45deg)`;
+            setTimeout(() => {
+                pendulum.style.transform = `rotate(-45deg)`;
+            }, period * 500);
+
+            resultDiv.innerHTML = `
+                <p>공의 질량: ${mass} kg</p>
+                <p>경사면의 각도: ${slope} 도</p>
+                <p>경사면에서의 가속도: ${acceleration.toFixed(2)} m/s²</p>
+                <p>진자의 길이: ${length} m</p>
+                <p>진자의 주기: ${period.toFixed(2)} s</p>
+            `;
+        }
+    </script>
+</body>
+</html>

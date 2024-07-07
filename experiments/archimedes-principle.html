@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>아르키메데스의 원리 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header, .footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .experiment-details {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .experiment-details h2 {
+            margin-top: 0;
+        }
+        .experiment-details p, .experiment-details ol {
+            font-size: 1.1em;
+        }
+        .experiment-details .result {
+            margin-top: 20px;
+        }
+        .experiment-details button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #animation {
+            margin: 20px 0;
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background: #e0f7fa;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+        }
+        #object {
+            width: 50px;
+            height: 50px;
+            background: #ffab00;
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 25px);
+            transition: bottom 2s;
+=======
+    <title>아르키메데스의 부력 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .object {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            margin: 20px;
+        }
+        .water {
+            display: inline-block;
+            width: 200px;
+            height: 300px;
+            background-color: #2980b9;
+            position: relative;
+            margin-top: 50px;
+        }
+        .object.submerged {
+            background-color: #e74c3c;
+>>>>>>> 6920fa2 (Add scientific experiment HTML files)
+        }
+    </style>
+</head>
+<body>
+<<<<<<< HEAD
+    <header class="header">
+        <h1>아르키메데스의 원리 실험</h1>
+    </header>
+    <main class="main-content">
+        <section class="experiment-details">
+            <h2>부력과 유체 변위 탐구</h2>
+            <p>이 실험에서는 아르키메데스의 부력과 유체 변위 원리를 탐구할 것입니다.</p>
+            <div class="input-group">
+                <label for="weight">물체의 무게 (kg):</label>
+                <input type="number" id="weight" placeholder="물체의 무게를 입력하세요">
+            </div>
+            <div class="input-group">
+                <label for="volume">물체의 부피 (L):</label>
+                <input type="number" id="volume" placeholder="물체의 부피를 입력하세요">
+            </div>
+            <button onclick="startExperiment()">실험 시작</button>
+            <div id="animation">
+                <div id="object"></div>
+            </div>
+            <div class="result" id="result"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="../index.html">실험 목록으로 돌아가기</a>
+    </footer>
+
+    <script>
+        function startExperiment() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const volume = parseFloat(document.getElementById('volume').value);
+            const resultDiv = document.getElementById('result');
+            const object = document.getElementById('object');
+            const densityOfWater = 1; // 1 kg/L
+
+            if (isNaN(weight) || isNaN(volume) || weight <= 0 || volume <= 0) {
+                resultDiv.innerHTML = '<p>올바른 값을 입력하세요.</p>';
+                return;
+            }
+
+            const displacedWaterWeight = volume * densityOfWater;
+            const buoyantForce = displacedWaterWeight;
+            const isFloating = buoyantForce >= weight;
+
+            object.style.bottom = isFloating ? '150px' : '0';
+
+            setTimeout(() => {
+                resultDiv.innerHTML = `
+                    <p>물체의 무게: ${weight} kg</p>
+                    <p>변위된 물의 무게: ${displacedWaterWeight} kg</p>
+                    <p>부력: ${buoyantForce} N</p>
+                    <p>결과: 물체는 ${isFloating ? '뜨고' : '가라앉고'} 있습니다.</p>
+                `;
+            }, 2000);
+=======
+    <div class="container">
+        <h1>아르키메데스의 부력 실험</h1>
+        <p>물체를 물에 넣어 부력을 체험해보세요!</p>
+        <div class="water" id="water">
+            <div class="object" id="object"></div>
+        </div>
+        <button onclick="toggleSubmerge()">물에 넣기 / 빼기</button>
+    </div>
+    <script>
+        function toggleSubmerge() {
+            var object = document.getElementById("object");
+            object.classList.toggle("submerged");
+>>>>>>> 6920fa2 (Add scientific experiment HTML files)
+        }
+    </script>
+</body>
+</html>
