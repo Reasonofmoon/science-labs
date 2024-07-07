@@ -1,0 +1,14 @@
+{
+    "name": "science-labs",
+    "version": "1.0.0",
+    "description": "Interactive Science Experiments - Travel Through Time and Discovery",
+    "main": "index.html",
+    "scripts": {
+      "start": "serve",
+      "build": "mkdir -p dist && cp -R index.html styles.css script.js images dist/"
+    },
+    "dependencies": {
+      "serve": "^14.2.0"
+    },
+    "devDependencies": {}
+  }
