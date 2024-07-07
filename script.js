@@ -4,13 +4,13 @@ const experiments = {
             title: "Archimedes' Principle",
             description: "Explore buoyancy and fluid displacement with the famous Greek mathematician.",
             image: "images/archimedes-principle.jpg",
-            link: "https://interactive-science-travel.edu/experiments/archimedes-principle"
+            link: "experiments/archimedes-principle.html"
         },
         {
             title: "Measuring Earth's Circumference",
             description: "Recreate Eratosthenes' ingenious method for calculating the size of our planet.",
             image: "images/eratosthenes-earth.jpg",
-            link: "https://interactive-science-travel.edu/experiments/eratosthenes-earth"
+            link: "experiments/eratosthenes-earth.html"
         }
     ],
     renaissance: [
@@ -18,13 +18,13 @@ const experiments = {
             title: "Galileo's Motion Studies",
             description: "Investigate the laws of motion using inclined planes and pendulums.",
             image: "images/galileo-motion.jpg",
-            link: "https://interactive-science-travel.edu/experiments/galileo-motion"
+            link: "experiments/galileo-motion.html"
         },
         {
             title: "Newton's Prism Experiment",
             description: "Discover the nature of light and color through prismatic dispersion.",
             image: "images/newton-prism.jpg",
-            link: "https://interactive-science-travel.edu/experiments/newton-prism"
+            link: "experiments/newton-prism.html"
         }
     ],
     industrial: [
@@ -32,13 +32,13 @@ const experiments = {
             title: "Faraday's Electromagnetic Discoveries",
             description: "Explore the relationship between electricity and magnetism.",
             image: "images/faraday-electricity.jpg",
-            link: "https://interactive-science-travel.edu/experiments/faraday-electromagnetism"
+            link: "experiments/faraday-electromagnetism.html"
         },
         {
             title: "Building the Periodic Table",
             description: "Arrange elements and discover periodic trends with Mendeleev.",
             image: "images/mendeleev-periodic.jpg",
-            link: "https://interactive-science-travel.edu/experiments/mendeleev-periodic-table"
+            link: "experiments/mendeleev-periodic-table.html"
         }
     ],
     modern: [
@@ -46,13 +46,13 @@ const experiments = {
             title: "Einstein's Relativity",
             description: "Visualize time dilation and space contraction in special relativity.",
             image: "images/einstein-relativity.jpg",
-            link: "https://interactive-science-travel.edu/experiments/einstein-relativity"
+            link: "experiments/einstein-relativity.html"
         },
         {
             title: "Unraveling DNA's Structure",
             description: "Work alongside Watson, Crick, and Franklin to decode the blueprint of life.",
             image: "images/dna-structure.jpg",
-            link: "https://interactive-science-travel.edu/experiments/dna-structure"
+            link: "experiments/dna-structure.html"
         }
     ],
     future: [
@@ -60,23 +60,24 @@ const experiments = {
             title: "Quantum Computing Basics",
             description: "Explore the principles of superposition and entanglement in quantum systems.",
             image: "images/quantum-computing.jpg",
-            link: "https://interactive-science-travel.edu/experiments/quantum-computing"
+            link: "experiments/quantum-computing.html"
         },
         {
             title: "Nanotech Assembly Simulation",
             description: "Manipulate atoms to create microscopic machines and structures.",
             image: "images/nanotech-assembly.jpg",
-            link: "https://interactive-science-travel.edu/experiments/nanotech-assembly"
+            link: "experiments/nanotech-assembly.html"
         },
         {
             title: "Futuristic Spaceship Engineering",
             description: "Design and test advanced propulsion systems and life support for interstellar travel.",
             image: "images/spaceship-engineering.jpg",
-            link: "https://interactive-science-travel.edu/experiments/spaceship-engineering"
+            link: "experiments/spaceship-engineering.html"
         }
     ]
 };
 
+// 나머지 코드는 그대로 유지
 function createExperimentCard(experiment) {
     return `
         <div class="experiment-card">
