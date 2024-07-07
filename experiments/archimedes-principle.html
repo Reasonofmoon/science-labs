@@ -3,49 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아르키메데스의 부력 실험</title>
+    <title>아르키메데스의 원리 실험</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header, .footer {
             text-align: center;
-            background-color: #f0f0f0;
+            margin: 20px 0;
         }
-        .container {
-            margin-top: 50px;
+        .experiment-details {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .object {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: #3498db;
-            margin: 20px;
+        .experiment-details h2 {
+            margin-top: 0;
         }
-        .water {
-            display: inline-block;
-            width: 200px;
-            height: 300px;
-            background-color: #2980b9;
-            position: relative;
-            margin-top: 50px;
+        .experiment-details p, .experiment-details ol {
+            font-size: 1.1em;
         }
-        .object.submerged {
-            background-color: #e74c3c;
+        .experiment-details .result {
+            margin-top: 20px;
+        }
+        .experiment-details button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>아르키메데스의 부력 실험</h1>
-        <p>물체를 물에 넣어 부력을 체험해보세요!</p>
-        <div class="water" id="water">
-            <div class="object" id="object"></div>
-        </div>
-        <button onclick="toggleSubmerge()">물에 넣기 / 빼기</button>
-    </div>
+    <header class="header">
+        <h1>아르키메데스의 원리 실험</h1>
+    </header>
+    <main class="main-content">
+        <section class="experiment-details">
+            <h2>부력과 유체 변위 탐구</h2>
+            <p>이 실험에서는 아르키메데스의 부력과 유체 변위 원리를 탐구할 것입니다.</p>
+            <h3>실험 절차:</h3>
+            <ol>
+                <li>물로 채운 용기를 준비하고 물의 높이를 표시합니다.</li>
+                <li>물체를 물에 조심스럽게 넣고 새로운 물 높이를 관찰합니다.</li>
+                <li>변위된 물의 부피를 계산합니다.</li>
+                <li>물체의 무게를 측정하고 변위된 물의 무게와 비교합니다.</li>
+            </ol>
+            <p>부력은 변위된 유체의 무게와 같음을 확인하세요!</p>
+            <button onclick="startExperiment()">실험 시작</button>
+            <div class="result" id="result"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="../index.html">실험 목록으로 돌아가기</a>
+    </footer>
+
     <script>
-        function toggleSubmerge() {
-            var object = document.getElementById("object");
-            object.classList.toggle("submerged");
+        function startExperiment() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>물체를 물에 넣고 있습니다...</p>';
+            setTimeout(() => {
+                resultDiv.innerHTML += '<p>물의 변위가 발생했습니다! 부력은 변위된 물의 무게와 같습니다.</p>';
+            }, 3000);
         }
     </script>
 </body>
