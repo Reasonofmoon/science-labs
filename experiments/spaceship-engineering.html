@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Futuristic Spaceship Engineering Experiment</title>
     <style>
         body {
@@ -78,28 +77,10 @@
             left: 10%;
             transform: translateY(-50%);
             transition: left 1s linear, top 1s linear;
-=======
-    <title>우주선 엔지니어링 실험</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .spaceship {
-            width: 50px;
-            height: 100px;
-            background-color: #e74c3c;
-            margin: 20px auto;
->>>>>>> 6920fa2 (Add scientific experiment HTML files)
         }
     </style>
 </head>
 <body>
-<<<<<<< HEAD
     <header class="header">
         <h1>Futuristic Spaceship Engineering Experiment</h1>
     </header>
@@ -182,20 +163,6 @@
             spaceship.style.top = `${topPosition}%`;
 
             resultDiv.innerHTML = `<p>${description}</p><p>Fuel Capacity: ${fuel} kg</p><p>Distance Travelled: ${distance.toFixed(2)} units</p><p>Spaceship Position: ${topPosition.toFixed(2)}% vertical</p>`;
-=======
-    <div class="container">
-        <h1>우주선 엔지니어링 실험</h1>
-        <p>우주선을 설계하고 발사해보세요!</p>
-        <div class="spaceship" id="spaceship"></div>
-        <button onclick="launchSpaceship()">발사</button>
-    </div>
-    <script>
-        function launchSpaceship() {
-            var spaceship = document.getElementById("spaceship");
-            spaceship.style.transition = "top 2s ease";
-            spaceship.style.position = "relative";
-            spaceship.style.top = "-300px";
->>>>>>> 6920fa2 (Add scientific experiment HTML files)
         }
     </script>
 </body>
