@@ -3,35 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>멘델레예프의 주기율표 실험</title>
+    <title>주기율표 구성 실험</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-        .container {
-            margin-top: 50px;
+        .header, .footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .experiment-details {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .experiment-details h2 {
+            margin-top: 0;
+        }
+        .experiment-details p, .experiment-details ol {
+            font-size: 1.1em;
+        }
+        .experiment-details .result {
+            margin-top: 20px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .elements, .periodic-table {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .element, .cell {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
         }
         .element {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: #3498db;
-            margin: 5px;
-            line-height: 50px;
-            color: white;
+            background-color: #f0f0f0;
+        }
+        .cell {
+            background-color: #fff;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>멘델레예프의 주기율표 실험</h1>
-        <p>주기율표의 원소를 확인해보세요!</p>
-        <div class="element">H</div>
-        <div class="element">He</div>
-        <div class="element">Li</div>
-        <div class="element">Be</div>
-    </div>
+    <header class="header">
+        <h1>주기율표 구성 실험</h1>
+    </header>
+    <main class="main-content">
+        <section class="experiment-details">
+            <h2>원소 배치 및 주기적 경향 발견</h2>
+            <p>멘델레예프의 혁신적인 원소 배열 논리를 탐구해보세요.</p>
+            <h3>실험 절차:</h3>
+            <ol>
+                <li>제공된 다양한 원소의 성질을 연구합니다.</li>
+                <li>원자량과 화학적 성질을 기반으로 원소를 배열합니다.</li>
+                <li>배열에서 패턴과 경향을 식별합니다.</li>
+                <li>배열을 바탕으로 미지의 원소나 발견되지 않은 원소의 성질을 예측합니다.</li>
+            </ol>
+            <p>화학에서 가장 중요한 도구 중 하나를 만드는 과정을 체험해보세요!</p>
+            <div class="elements" id="elements">
+                <!-- Example Elements -->
+                <div class="element" draggable="true" data-symbol="H">H</div>
+                <div class="element" draggable="true" data-symbol="He">He</div>
+                <div class="element" draggable="true" data-symbol="Li">Li</div>
+                <div class="element" draggable="true" data-symbol="Be">Be</div>
+                <!-- Add more elements as needed -->
+            </div>
+            <div class="periodic-table" id="periodic-table">
+                <!-- Create empty cells for the periodic table -->
+                <div class="cell" data-pos="1"></div>
+                <div class="cell" data-pos="2"></div>
+                <div class="cell" data-pos="3"></div>
+                <div class="cell" data-pos="4"></div>
+                <!-- Add more cells to complete the periodic table layout -->
+            </div>
+            <div class="result" id="result"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="../index.html">실험 목록으로 돌아가기</a>
+    </footer>
+
+    <script>
+        const elements = document.querySelectorAll('.element');
+        const cells = document.querySelectorAll('.cell');
+
+        elements.forEach(element => {
+            element.addEventListener('dragstart', dragStart);
+        });
+
+        cells.forEach(cell => {
+            cell.addEventListener('dragover', dragOver);
+            cell.addEventListener('drop', drop);
+        });
+
+        function dragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.dataset.symbol);
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function drop(e) {
+            const symbol = e.dataTransfer.getData('text/plain');
+            e.target.textContent = symbol;
+            e.target.classList.add('occupied');
+        }
+    </script>
 </body>
 </html>
