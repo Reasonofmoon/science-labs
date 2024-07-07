@@ -1,31 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Measuring Earth's Circumference Experiment</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>지구의 둘레 측정 실험</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header, .footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .experiment-details {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .experiment-details h2 {
+            margin-top: 0;
+        }
+        .experiment-details p, .experiment-details ol {
+            font-size: 1.1em;
+        }
+        .experiment-details .result {
+            margin-top: 20px;
+        }
+        .experiment-details button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
-        <h1>Measuring Earth's Circumference Experiment</h1>
+        <h1>지구의 둘레 측정 실험</h1>
     </header>
     <main class="main-content">
         <section class="experiment-details">
-            <h2>Recreate Eratosthenes' Method</h2>
-            <p>Learn how Eratosthenes calculated the Earth's circumference over 2000 years ago.</p>
-            <h3>Steps:</h3>
+            <h2>에라토스테네스의 방법 재현</h2>
+            <p>에라토스테네스가 2000년 전에 지구의 둘레를 계산한 방법을 배워보세요.</p>
+            <h3>실험 절차:</h3>
             <ol>
-                <li>Measure the shadow of a vertical stick at noon on the summer solstice.</li>
-                <li>Compare this measurement with the shadow (or lack thereof) in a city directly north or south.</li>
-                <li>Calculate the angle difference between the two locations.</li>
-                <li>Use the distance between the two cities to estimate Earth's circumference.</li>
+                <li>하지에 정오에 수직 막대의 그림자를 측정합니다.</li>
+                <li>북쪽 또는 남쪽의 도시에서 이 측정값을 비교합니다.</li>
+                <li>두 위치 사이의 각도 차이를 계산합니다.</li>
+                <li>두 도시 사이의 거리를 사용하여 지구의 둘레를 추정합니다.</li>
             </ol>
-            <p>Discover how accurate ancient measurements could be with simple observations!</p>
+            <p>간단한 관찰로도 고대의 측정이 얼마나 정확할 수 있는지 발견해보세요!</p>
+            <div class="input-group">
+                <label for="shadowLength">그림자의 길이 (cm):</label>
+                <input type="number" id="shadowLength" placeholder="그림자의 길이를 입력하세요" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="stickHeight">막대의 높이 (cm):</label>
+                <input type="number" id="stickHeight" placeholder="막대의 높이를 입력하세요" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="distance">두 도시 사이의 거리 (km):</label>
+                <input type="number" id="distance" placeholder="두 도시 사이의 거리를 입력하세요" step="1">
+            </div>
+            <button onclick="calculateCircumference()">지구의 둘레 계산</button>
+            <div class="result" id="result"></div>
         </section>
     </main>
     <footer class="footer">
-        <a href="../index.html">Back to Experiments</a>
+        <a href="../index.html">실험 목록으로 돌아가기</a>
     </footer>
+
+    <script>
+        function calculateCircumference() {
+            const shadowLength = parseFloat(document.getElementById('shadowLength').value);
+            const stickHeight = parseFloat(document.getElementById('stickHeight').value);
+            const distance = parseFloat(document.getElementById('distance').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(shadowLength) || isNaN(stickHeight) || isNaN(distance) || shadowLength <= 0 || stickHeight <= 0 || distance <= 0) {
+                resultDiv.innerHTML = '<p>올바른 값을 입력하세요.</p>';
+                return;
+            }
+
+            const angle = Math.atan(shadowLength / stickHeight) * (180 / Math.PI); // 각도 계산
+            const circumference = 360 * (distance / angle); // 지구의 둘레 계산
+
+            resultDiv.innerHTML = `
+                <p>막대의 그림자 길이: ${shadowLength} cm</p>
+                <p>막대의 높이: ${stickHeight} cm</p>
+                <p>두 도시 사이의 거리: ${distance} km</p>
+                <p>계산된 각도: ${angle.toFixed(2)} 도</p>
+                <p>추정된 지구의 둘레: ${circumference.toFixed(2)} km</p>
+            `;
+        }
+    </script>
 </body>
 </html>
